@@ -19,7 +19,7 @@ jobs:
       - name: check user home directory
         run: pwd
       - name: copy playbook.yml
-        run: sudo cp playbook.yml /root/ut-kube/
+        run: sudo cp playbook.yml /root/aut-kube/
       - name: copy ansible.cfg
-        run: sudo cp ansible.cfg /root/ut-kube/
+        run: sudo cp ansible.cfg /root/aut-kube/
 
