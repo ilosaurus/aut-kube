@@ -12,3 +12,7 @@ jobs:
     steps:
       - name: testing linux command on self-hosted runner
         run: cat /etc/os-release
+      - name: check user login
+        run: w
+      - name: check user home directory
+        run: pwd
