@@ -10,6 +10,8 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
       - name: testing linux command on self-hosted runner
         run: cat /etc/os-release
       - name: check user login
