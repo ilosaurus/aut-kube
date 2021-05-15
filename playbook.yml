@@ -23,3 +23,8 @@
     - name: Update apt and install docker-ce
       apt: update_cache=yes name=docker-ce state=latest
 
+    - name: Copy /etc/hosts file   
+      copy:
+        src: /etc/hosts
+        dest: /etc/hosts
+
