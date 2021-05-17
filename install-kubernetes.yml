@@ -6,10 +6,6 @@
       timezone:
         name: Asia/Jakarta
 
-    - name: Install required system packages
-      apt: name={{ item }} state=latest update_cache=yes
-      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
-
     - name: add Kubernetes apt-key
       apt_key:
         url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -22,10 +18,6 @@
         filename: 'kubernetes'
     - name: Update Repository
       apt: name=aptitude state=latest update_cache=yes force_apt_get=yes 
-
-    - name: remove package
-      apt: name={{ item }} state=absent
-      loop: [ 'kubeadm', 'kubelet', 'kubectl']
 
     - name: install kubelet
       apt:
@@ -41,7 +33,7 @@
       apt:
         name: kubectl=1.20.0-00
         state: present
-        allow_downgrade: yes
+        force: yes
 
     - name: Hold kubeadm kubelet kubectl
       dpkg_selections: name={{ item }} selection=hold
