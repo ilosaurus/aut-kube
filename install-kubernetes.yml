@@ -9,7 +9,7 @@
     - name: Install required system packages
       apt: name={{ item }} state=latest update_cache=yes
       loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
-      
+
     - name: add Kubernetes apt-key
       apt_key:
         url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
@@ -41,6 +41,7 @@
       apt:
         name: kubectl=1.20.0-00
         state: present
+        allow_downgrade: yes
 
     - name: Hold kubeadm kubelet kubectl
       dpkg_selections: name={{ item }} selection=hold
