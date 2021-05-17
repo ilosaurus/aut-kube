@@ -18,6 +18,10 @@
     - name: Update Repository
       apt: name=aptitude state=latest update_cache=yes force_apt_get=yes 
 
+    - name: remove package
+      apt: name={{ item }} state=absent
+      loop: [ 'kubeadm', 'kubelet', 'kubectl']
+
     - name: install kubelet
       apt:
         name: kubelet=1.20.0-00
