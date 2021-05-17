@@ -18,18 +18,22 @@
  
     - name: install kubelet
       apt:
-        name: kubelet=1.20.0
+        name: kubelet=1.20.0-00
         state: present
       update_cache: true
  
     - name: install kubeadm
       apt:
-        name: kubeadm=1.20.0
+        name: kubeadm=1.20.0-00
         state: present
       update_cache: true
  
     - name: install kubectl
       apt:
-        name: kubectl=1.20.0
+        name: kubectl=1.20.0-00
         state: present
       update_cache: true
+
+    - name: Hold kubeadm kubelet kubectl
+      dpkg_selections: name={{ item }} selection=hold
+      loop: [ 'kubeadm', 'kubelet', 'kubectl']
