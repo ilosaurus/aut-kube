@@ -12,14 +12,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: testing linux command on self-hosted runner
-        run: cat /etc/os-release
-      - name: check user login
-        run: w
-      - name: check user home directory
-        run: pwd
-      - name: copy playbook.yml
-        run: sudo cp playbook.yml /root/aut-kube/
+      - name: list files
+        run: ls -lah
+      - name: copy all playbook
+        run: sudo cp *.yml /root/aut-kube/
       - name: copy ansible.cfg
         run: sudo cp ansible.cfg /root/aut-kube/
 
