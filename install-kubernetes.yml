@@ -15,7 +15,9 @@
         repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
         state: present
         filename: 'kubernetes'
- 
+    - name: Update Repository
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes 
+
     - name: install kubelet
       apt:
         name: kubelet=1.20.0-00
