@@ -35,4 +35,3 @@
         name: kubectl==1.20.0
         state: present
       update_cache: true
-
